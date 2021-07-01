@@ -1,7 +1,8 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable prettier/prettier */
+
 import * as React from 'react';
-import { Text, View, StyleSheet, FlatList, TouchableOpacity, Button } from 'react-native';
+import { View, StyleSheet, Button } from 'react-native';
 
 
 export default class HomeScreen extends React.Component {
@@ -14,34 +15,55 @@ export default class HomeScreen extends React.Component {
         };
     }
     render () {
-        let items = ['Vehicle', 'Utility', 'Air Travel'];
+        //let items = ['Vehicle', 'Utility', 'Air Travel'];
     return (
         <View style = { styles.home }>
-            <FlatList
-                contentContainerStyle = {{flexGrow: 1}}
+
+            <Button style = {{fontSize: 30}}
+                title = "Vehicle"
+                onPress = {() => this.props.navigation.navigate('Vehicle')}
+
+            />
+
+            <Button style = {{fontSize: 30}}
+                title = "Utility"
+                onPress = {() => this.props.navigation.navigate('Utility')}
+
+            />
+
+            <Button style = {{fontSize: 30}}
+                title = "Air Travel"
+                onPress = {() => this.props.navigation.navigate('Air Travel')}
+
+            />
+
+            {/* <FlatList
                 data = { items }
                 renderItem = { ({ item }) => (
                     <TouchableOpacity onPress = {() => {
                         if (item === 'Vehicle') {
                             this.props.navigation.navigate( 'Vehicle' );
-                        } else if (item === 'Utility'){
+                        } else if (item === 'Utility') {
                             this.props.navigation.navigate( 'Utility' );
                         } else {
                             this.props.navigation.navigate( 'Air Travel' );
                         }
-                    }
-                    }
-                    >
-                    <Text>
+                    }}
+
+                    > */}
+                    {/* <Text>
                         { item }
                    </Text>
                    </TouchableOpacity>
                 )}
-            />
+                keyExtractor={(item, index) => index.toString()}
+            /> */}
+            <View style = {{flex: 1, alignItems: 'center', justifyContent: 'flex-end'}}>
             <Button
                 title = "Results"
                 onPress = {() => this.props.navigation.navigate('Results')}
             />
+            </View>
         </View>
     );
     }
@@ -55,6 +77,6 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         fontSize: 30,
         alignItems: 'center',
-        justifyContent: 'flex-end',
+        justifyContent: 'flex-start',
     },
 });

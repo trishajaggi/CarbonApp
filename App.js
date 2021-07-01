@@ -11,6 +11,7 @@ import VehicleScreen from './screens/VehicleScreen';
 import UtilityScreen from './screens/UtilityScreen';
 import AirTravelScreen from './screens/AirTravelScreen';
 import Results from './screens/Results';
+import TipsScreen from './screens/TipsScreen';
 
 const Stack = createStackNavigator();
 
@@ -23,6 +24,7 @@ export default function App() {
         <Stack.Screen name = "Utility" component = {UtilityScreen}/>
         <Stack.Screen name = "Air Travel" component = {AirTravelScreen}/>
         <Stack.Screen name = "Results" component = {Results}/>
+        <Stack.Screen name = "Tips" component = {TipsScreen}/>
       </Stack.Navigator>
     </NavigationContainer>
 

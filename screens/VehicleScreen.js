@@ -15,6 +15,7 @@ export default class VehicleScreen extends Component {
 
     render(){
         let cars = [['car', 'electric', 'hybrid', 'gas']];
+        let placeholder = 'Enter average miles traveled per month';
         return (
             <View>
             <View style = {{height: 52}}>
@@ -28,7 +29,8 @@ export default class VehicleScreen extends Component {
              />
              </View>
             <View >
-            <TextInput style = {{fontSize: 30}}
+            <TextInput style = {{fontSize: 20}}
+                    placeholder = {placeholder}
                     value={this.text}
                     onChangeText = {this.setState(this.mileage)}
                />

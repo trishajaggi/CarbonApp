@@ -13,9 +13,11 @@ export default class AirTravelScreen extends Component {
         };
     }
     render() {
+        let placeholder = 'Enter average miles traveled per month';
         return (
             <View>
                 <TextInput style = {{height: 60, fontSize: 20}}
+                    placeholder = {placeholder}
                     value = { this.miles }
                     onChangeText = { this.setState( this.miles ) }
                 />
