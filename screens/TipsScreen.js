@@ -1,9 +1,8 @@
 /* eslint-disable prettier/prettier */
-import React, {Component} from 'react';
+import React from 'react';
 import { View, Text, StyleSheet, Button } from 'react-native';
 
-export default class TipsScreen extends Component {
-  render() {
+export default function TipsScreen ({navigation}) {
     return (
         <View>
             <Text style = { styles.paragraph} >
@@ -14,11 +13,10 @@ export default class TipsScreen extends Component {
             </Text>
             <Button
                 title = "Home"
-                onPress = {() => this.props.navigation.navigate('Home')}
+                onPress = {() => navigation.navigate('Home')}
             />
         </View>
     );
-    }
 }
 
 const styles = StyleSheet.create({
