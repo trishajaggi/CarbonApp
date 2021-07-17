@@ -1,7 +1,8 @@
 /* eslint-disable no-sequences */
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable prettier/prettier */
-import React, { useState } from 'react';
+import { useFocusEffect } from '@react-navigation/native';
+import React, { useState, useCallback } from 'react';
 import DropdownMenu from 'react-native-dropdown-menu';
 import { View, TextInput, Button, LogBox } from 'react-native';
 
@@ -10,22 +11,30 @@ LogBox.ignoreLogs([
    ]);
 
 export default function VehicleScreen ({navigation}) {
-    const [text, setText] = useState('');
+    let [text, setText] = useState('');
     let [mileage, setMileage] = useState('');
+    let [total, setTotal] = useState(0);
 
     let cars = [['car', 'electric', 'hybrid', 'gas']];
     let placeholder = 'Enter average miles traveled per month';
 
-    // const calculate = () => {
-    //     if ( text === 'electric' ) {
-    //         mileage.miles = 0;
-    //     } else if ( text === 'hybrid') {
-    //         mileage.miles = mileage.miles * 0.5;
-    //         console.log(mileage.miles);
-    //     }
-    //     setMileage(mileage.miles);
-    // };
+    const calculate = useCallback(() => {
+        let num = parseInt(mileage, 10);
+        if ( text === 'electric' ) {
+            num = 0;
+        } else if ( text === 'hybrid') {
+            num = num * 0.5;
+        } else {
+            num = num * 0.79;
+        }
+        setTotal(num);
+    },[mileage, text]);
 
+    useFocusEffect(
+        useCallback(() => {
+            calculate();
+        },[calculate])
+    );
 
     return (
         <View>
@@ -48,7 +57,7 @@ export default function VehicleScreen ({navigation}) {
             <Button style = {{ flex: 1, alignItems: 'center', justifyContent: 'flex-end' }}
                 title = "Done"
                 onPress = {() => navigation.navigate('Home', {
-                    vehicleReturn: mileage,
+                    vehicleReturn: total.toString(),
                 })}
             />
         </View>

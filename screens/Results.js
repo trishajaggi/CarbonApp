@@ -1,12 +1,29 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable eol-last */
 /* eslint-disable prettier/prettier */
-
-import React, {useState} from 'react';
+import {useFocusEffect, useRoute} from '@react-navigation/native';
+import React, {useState, useCallback} from 'react';
 import { View, Text, Button } from 'react-native';
 
-export default function Results ({navigation}) {
+export default function Results ({navigation, route }) {
     const [total, setTotal] = useState(0);
+    // let [vehNum, setVehNum] = useState(0);
+    // let [utilNum, setUtilNum] = useState(0);
+    // let [airNum, setAirNum] = useState(0);
+
+    const calculate = useCallback(() => {
+        let num = 0;
+        if ( route.params ) {
+            num = route.params.vehNum + route.params.utilNum + route.params.airNum;
+        }
+        setTotal(num);
+    }, [route]);
+
+    useFocusEffect(
+        useCallback(() => {
+            calculate();
+        },[calculate])
+    );
 
     return (
         <View>

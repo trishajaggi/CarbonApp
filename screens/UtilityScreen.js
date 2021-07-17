@@ -9,10 +9,10 @@ import {View, Button, TextInput} from 'react-native';
 import DropdownMenu from 'react-native-dropdown-menu';
 
 export default function UtilityScreen ({navigation}) {
-    let [gasBill, setGasBill] = useState(0);
-    let [electricBill, setElectricBill] = useState(0);
-    let [fuelBill, setFuelBill] = useState(0);
-    let [propaneBill, setPropaneBill] = useState(0);
+    let [gasBill, setGasBill] = useState('');
+    let [electricBill, setElectricBill] = useState('');
+    let [fuelBill, setFuelBill] = useState('');
+    let [propaneBill, setPropaneBill] = useState('');
     let [text, setText] = useState('');
     let [total, setTotal] = useState(0);
 
@@ -23,10 +23,13 @@ export default function UtilityScreen ({navigation}) {
     let propanePHolder = 'Enter propane bill in $';
 
     const calc = useCallback(() => {
-        let sum = gasBill + electricBill + fuelBill + propaneBill
+        let gasInt = parseInt(gasBill, 10) * 105
+        let electricInt = parseInt(electricBill, 10) * 105
+        let fuelInt = parseInt(fuelBill,10) * 113
+        let sum = gasInt + electricInt + fuelInt + parseInt(propaneBill,10)
         setTotal(sum)
-        console.log(sum)
-    },[electricBill, fuelBill, gasBill, propaneBill])
+        console.log(total)
+    },[electricBill, fuelBill, gasBill, propaneBill, total])
 
     useFocusEffect(
         useCallback(() => {
@@ -83,7 +86,7 @@ export default function UtilityScreen ({navigation}) {
         <Button style = {{ flex: 1, alignItems: 'center', justifyContent: 'flex-end' }}
             title = "Done"
             onPress = {() => navigation.navigate('Home', {
-                utilityReturn: total,
+                utilityReturn: total.toString(),
             })}
         />
     </View>

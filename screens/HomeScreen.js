@@ -6,23 +6,24 @@
 import { useFocusEffect } from '@react-navigation/native';
 import React, { useCallback, useState } from 'react';
 import { View, StyleSheet, Button, TextInput } from 'react-native';
-import VehicleScreen from './VehicleScreen';
+
 
 export default function HomeScreen ({navigation, route}) {
 
     let [vehicleReturn, setVehicleReturn] = useState('');
     let [utilityReturn, setUtilityReturn] = useState('');
     let [airReturn, setAirReturn] = useState('');
+
     useFocusEffect(
-        useCallback(() =>{
-            if ( route.params ){
+        useCallback(() => {
+            if ( route.params ) {
                 setVehicleReturn( route.params.vehicleReturn );
             }
         }, [route])
     );
 
     useFocusEffect(
-        useCallback(() =>{
+        useCallback(() => {
             if ( route.params ) {
                 setAirReturn( route.params.airReturn );
             }
@@ -30,7 +31,7 @@ export default function HomeScreen ({navigation, route}) {
     );
 
     useFocusEffect(
-        useCallback(() =>{
+        useCallback(() => {
             if ( route.params ) {
                 setUtilityReturn( route.params.utilityReturn );
                 //console.log(utilityReturn);
@@ -80,7 +81,11 @@ export default function HomeScreen ({navigation, route}) {
 
             <Button
                 title = "Results"
-                onPress = {() => navigation.navigate('Results')}
+                onPress = {() => navigation.navigate('Results', {
+                    vehNum: parseInt(vehicleReturn, 10),
+                    utilNum: parseInt(utilityReturn, 10),
+                    airNum: parseInt(airReturn, 10),
+                })}
             />
 
             </View>
