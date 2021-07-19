@@ -19,7 +19,7 @@ export default function VehicleScreen ({navigation}) {
     let placeholder = 'Enter average miles traveled per month';
 
     const calculate = useCallback(() => {
-        let num = parseInt(mileage, 10);
+        let num = parseInt( mileage, 10 );
         if ( text === 'electric' ) {
             num = 0;
         } else if ( text === 'hybrid') {
@@ -27,7 +27,7 @@ export default function VehicleScreen ({navigation}) {
         } else {
             num = num * 0.79;
         }
-        setTotal(num);
+        setTotal( num );
     },[mileage, text]);
 
     useFocusEffect(
@@ -40,12 +40,12 @@ export default function VehicleScreen ({navigation}) {
         <View>
         <View style = {{height: 52}}>
             <DropdownMenu
-                style={{flex: 0.5}}
-                bgColor={'grey'}
-                tintColor={'#000000'}
-                activityTintColor={'red'}
-                handler={(selection, row) => setText(cars[selection][row])}
-                data={cars}
+                style = {{flex: 0.5}}
+                bgColor = {'grey'}
+                tintColor = {'#000000'}
+                activityTintColor = {'red'}
+                handler = { (selection, row) => setText(cars[selection][row])}
+                data = { cars }
             />
         </View>
         <View>

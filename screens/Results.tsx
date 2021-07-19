@@ -26,7 +26,7 @@ export default function Results ({navigation, route }) {
     return (
         <View>
             <Text style = {{ fontSize: 20 }}>
-                {total}
+                { total + ' CO2e' }
             </Text>
             <Button
                 title = "Tips for reducing your footprint"

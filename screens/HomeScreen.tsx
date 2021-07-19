@@ -19,7 +19,7 @@ export default function HomeScreen ({navigation, route}) {
             if ( route.params ) {
                 setVehicleReturn( route.params.vehicleReturn + ' CO2e');
             }
-        }, [route])
+        }, [ route ])
     );
 
     useFocusEffect(
@@ -27,7 +27,7 @@ export default function HomeScreen ({navigation, route}) {
             if ( route.params ) {
                 setAirReturn( route.params.airReturn + ' CO2e');
             }
-        }, [route])
+        }, [ route ])
     );
 
     useFocusEffect(

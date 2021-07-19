@@ -6,10 +6,9 @@ export default function TipsScreen ({navigation}) {
     return (
         <View>
             <Text style = { styles.paragraph} >
-                - {'\n'}
-                - {'\n'}
-                - {'\n'}
-                -
+                - Incorporate walking or biking to some of your regular short-trip destinations{'\n'}
+                - Turn off lights and unplug devices when you're not using them {'\n'}
+                - Reuse and Recycle {'\n'}
             </Text>
             <Button
                 title = "Home"

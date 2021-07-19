@@ -20,12 +20,12 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName = "Home" >
-        <Stack.Screen name = "Home" component = {HomeScreen} />
-        <Stack.Screen name = "Vehicle" component = {VehicleScreen}/>
-        <Stack.Screen name = "Utility" component = {UtilityScreen}/>
-        <Stack.Screen name = "Air Travel" component = {AirTravelScreen}/>
-        <Stack.Screen name = "Results" component = {Results}/>
-        <Stack.Screen name = "Tips" component = {TipsScreen}/>
+        <Stack.Screen name = "Home" component = { HomeScreen } />
+        <Stack.Screen name = "Vehicle" component = { VehicleScreen }/>
+        <Stack.Screen name = "Utility" component = { UtilityScreen }/>
+        <Stack.Screen name = "Air Travel" component = { AirTravelScreen }/>
+        <Stack.Screen name = "Results" component = { Results }/>
+        <Stack.Screen name = "Tips" component = { TipsScreen }/>
       </Stack.Navigator>
     </NavigationContainer>
 
