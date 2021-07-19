@@ -14,6 +14,7 @@ export default function TipsScreen ({navigation}) {
             <Button
                 title = "Home"
                 onPress = {() => navigation.navigate('Home')}
+                color = "green"
             />
         </View>
     );

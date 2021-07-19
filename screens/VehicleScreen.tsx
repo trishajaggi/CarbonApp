@@ -54,11 +54,13 @@ export default function VehicleScreen ({navigation}) {
                 value = { mileage }
                 onChangeText = { setMileage }
             />
-            <Button style = {{ flex: 1, alignItems: 'center', justifyContent: 'flex-end' }}
+            <Button
+            // style = {{ flex: 1, alignItems: 'center', justifyContent: 'flex-end' }}
                 title = "Done"
                 onPress = {() => navigation.navigate('Home', {
                     vehicleReturn: total.toString(),
                 })}
+                color = "green"
             />
         </View>
         </View>
@@ -66,3 +68,5 @@ export default function VehicleScreen ({navigation}) {
     );
 
 }
+
+

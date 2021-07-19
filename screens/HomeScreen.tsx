@@ -17,7 +17,7 @@ export default function HomeScreen ({navigation, route}) {
     useFocusEffect(
         useCallback(() => {
             if ( route.params ) {
-                setVehicleReturn( route.params.vehicleReturn );
+                setVehicleReturn( route.params.vehicleReturn + ' CO2e');
             }
         }, [route])
     );
@@ -25,7 +25,7 @@ export default function HomeScreen ({navigation, route}) {
     useFocusEffect(
         useCallback(() => {
             if ( route.params ) {
-                setAirReturn( route.params.airReturn );
+                setAirReturn( route.params.airReturn + ' CO2e');
             }
         }, [route])
     );
@@ -33,8 +33,7 @@ export default function HomeScreen ({navigation, route}) {
     useFocusEffect(
         useCallback(() => {
             if ( route.params ) {
-                setUtilityReturn( route.params.utilityReturn );
-                //console.log(utilityReturn);
+                setUtilityReturn( route.params.utilityReturn + ' CO2e');
             }
         }, [route])
     );
@@ -50,9 +49,10 @@ export default function HomeScreen ({navigation, route}) {
                 onChangeText = { setVehicleReturn }
             />
 
-            <Button style = {{fontSize: 30}}
+            <Button
                 title = "Vehicle"
                 onPress = {() => navigation.navigate('Vehicle')}
+                color = "green"
             />
 
             <TextInput style = { styles.border }
@@ -61,9 +61,10 @@ export default function HomeScreen ({navigation, route}) {
                 onChangeText = { setUtilityReturn }
             />
 
-            <Button style = {{fontSize: 30}}
+            <Button
                 title = "Utility"
                 onPress = {() => navigation.navigate('Utility')}
+                color = "green"
             />
 
             <TextInput style = { styles.border }
@@ -72,12 +73,13 @@ export default function HomeScreen ({navigation, route}) {
                 onChangeText = { setAirReturn }
             />
 
-            <Button style = {{fontSize: 30}}
+            <Button
                 title = "Air Travel"
                 onPress = {() => navigation.navigate('Air Travel')}
+                color = "green"
             />
 
-            <View style = {{flex: 1, alignItems: 'center', justifyContent: 'flex-end'}}>
+            <View style = { styles.end }>
 
             <Button
                 title = "Results"
@@ -86,6 +88,7 @@ export default function HomeScreen ({navigation, route}) {
                     utilNum: parseInt(utilityReturn, 10),
                     airNum: parseInt(airReturn, 10),
                 })}
+                color = "green"
             />
 
             </View>
@@ -109,10 +112,16 @@ const styles = StyleSheet.create({
     border: {
         flex: 1,
         backgroundColor: 'white',
-        width: 100,
+        width: 200,
         height: 10,
-        fontSize: 10,
+        fontSize: 30,
         alignItems: 'center',
         borderColor: 'black',
+    },
+
+    end: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'flex-end',
     },
 });

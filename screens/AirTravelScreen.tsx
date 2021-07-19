@@ -3,41 +3,49 @@
 /* eslint-disable prettier/prettier */
 import {useFocusEffect} from '@react-navigation/native';
 import React, { useCallback, useState } from 'react';
-import { View, TextInput, Button } from 'react-native';
+import { View, TextInput, Button, StyleSheet } from 'react-native';
 
 export default function AirTravelScreen ({ navigation }) {
 
-    let [miles, setMiles] = useState('');
-    let [total, setTotal] = useState(0);
+    let [miles, setMiles] = useState( '' );
+    let [total, setTotal] = useState( 0 );
 
     let placeholder = 'Enter average miles traveled per month';
 
     const calculate = useCallback(() =>{
-        let num = parseInt(miles, 10);
+        let num = parseInt( miles, 10 );
         num = num * 0.24;
-        setTotal(num);
-    }, [miles]);
+        setTotal( num );
+    }, [ miles ]);
 
     useFocusEffect(
         useCallback(() => {
             calculate();
-        },[calculate])
+        },[ calculate ])
     );
 
     return (
         <View>
-            <TextInput style = {{height: 60, fontSize: 20}}
+            <TextInput style = { styles.text }
                 placeholder = { placeholder }
                 value = { miles }
                 onChangeText = { setMiles }
             />
 
-            <Button style = {{ flex: 1, alignItems: 'center', justifyContent: 'flex-end' }}
+            <Button
                 title = "Done"
                 onPress = { () => navigation.navigate( 'Home', {
                     airReturn: total.toString(),
                     })}
+                color = "green"
             />
         </View>
     );
 }
+
+const styles = StyleSheet.create({
+    text: {
+        height: 60,
+        fontSize: 20,
+    },
+});

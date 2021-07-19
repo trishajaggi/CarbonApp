@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable keyword-spacing */
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable semi */
@@ -12,8 +13,8 @@ export default function UtilityScreen ({navigation}) {
     let [gasBill, setGasBill] = useState('');
     let [electricBill, setElectricBill] = useState('');
     let [fuelBill, setFuelBill] = useState('');
-    let [propaneBill, setPropaneBill] = useState('');
-    let [text, setText] = useState('');
+    //let [propaneBill, setPropaneBill] = useState('');
+    let [text, setText] = useState('1');
     let [total, setTotal] = useState(0);
 
     let numPeople = [['household size', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10']]
@@ -26,15 +27,14 @@ export default function UtilityScreen ({navigation}) {
         let gasInt = parseInt(gasBill, 10) * 105
         let electricInt = parseInt(electricBill, 10) * 105
         let fuelInt = parseInt(fuelBill,10) * 113
-        let sum = gasInt + electricInt + fuelInt + parseInt(propaneBill,10)
+        let sum = (gasInt + electricInt + fuelInt) / parseInt(text, 10)
         setTotal(sum)
-        console.log(total)
-    },[electricBill, fuelBill, gasBill, propaneBill, total])
+    },[electricBill, fuelBill, gasBill, text])
 
     useFocusEffect(
         useCallback(() => {
             calc();
-        },[calc])
+        },[ calc ])
     )
 
 
@@ -58,6 +58,8 @@ export default function UtilityScreen ({navigation}) {
         />
         <Button
             title = "OK"
+            onPress = {() => null}
+            color = "green"
         />
         <TextInput style = {{fontSize: 20}}
             keyboardType = "numeric"
@@ -67,6 +69,8 @@ export default function UtilityScreen ({navigation}) {
         />
         <Button
             title = "OK"
+            onPress = {() => null}
+            color = "green"
         />
         <TextInput style = {{fontSize: 20}}
             keyboardType = "numeric"
@@ -74,20 +78,18 @@ export default function UtilityScreen ({navigation}) {
             value = {fuelBill}
             onChangeText = {setFuelBill}
         />
-        <Button
-            title = "OK"
-        />
-        <TextInput style = {{fontSize: 20}}
+        {/* <TextInput style = {{fontSize: 20}}
             keyboardType = "numeric"
             placeholder = {propanePHolder}
             value = {propaneBill}
             onChangeText = {setPropaneBill}
-        />
-        <Button style = {{ flex: 1, alignItems: 'center', justifyContent: 'flex-end' }}
+        /> */}
+        <Button
             title = "Done"
             onPress = {() => navigation.navigate('Home', {
                 utilityReturn: total.toString(),
             })}
+            color = "green"
         />
     </View>
     );
