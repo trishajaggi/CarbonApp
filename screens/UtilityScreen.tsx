@@ -43,29 +43,29 @@ export default function UtilityScreen ({navigation}) {
     return(
         <View style = {{flex: 1}}>
         <DropdownMenu
-            style={{flex: 0.5}}
-            bgColor={'grey'}
-            tintColor={'#000000'}
-            activityTintColor={'red'}
-            handler={(selection, row) => setText( numPeople[selection][row] )}
-            data={numPeople}
+            style = {{flex: 0.5}}
+            bgColor = { 'grey' }
+            tintColor = { '#000000' }
+            activityTintColor = { 'red' }
+            handler = { ( selection, row ) => setText( numPeople[ selection ][ row ] )}
+            data = { numPeople }
         />
-        <TextInput style = {{fontSize: 20}}
+        <TextInput style = {{ fontSize: 20 }}
             keyboardType = "numeric"
-            placeholder = {gasPHolder}
-            value = {gasBill}
-            onChangeText = {setGasBill}
+            placeholder = { gasPHolder }
+            value = { gasBill }
+            onChangeText = { setGasBill }
         />
         <Button
             title = "OK"
             onPress = {() => null}
             color = "green"
         />
-        <TextInput style = {{fontSize: 20}}
+        <TextInput style = {{ fontSize: 20 }}
             keyboardType = "numeric"
-            placeholder = {electricPHolder}
-            value = {electricBill}
-            onChangeText = {setElectricBill}
+            placeholder = { electricPHolder }
+            value = { electricBill }
+            onChangeText = { setElectricBill }
         />
         <Button
             title = "OK"
@@ -78,12 +78,6 @@ export default function UtilityScreen ({navigation}) {
             value = {fuelBill}
             onChangeText = {setFuelBill}
         />
-        {/* <TextInput style = {{fontSize: 20}}
-            keyboardType = "numeric"
-            placeholder = {propanePHolder}
-            value = {propaneBill}
-            onChangeText = {setPropaneBill}
-        /> */}
         <Button
             title = "Done"
             onPress = {() => navigation.navigate('Home', {
